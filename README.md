@@ -2,8 +2,10 @@
 This is the place for the code for my project of the book scanner capable to perform OCR of the scanned book pages and then read the text of the scanned book pages.
  
 The project name is: CHIKS (ЧИКС = Читающий Книжный Сканер)
-hardware: Raspberry PI 5 based
-software installed
+With its first release CHIKS supports reading paper books in Russian only.
+With future releases supported languages list will be extended. 
+Hardware: Raspberry PI 5 based.
+Software installed:
 1. operating system	Debian GNU/Linux 12 (bookworm)
 kernel			Linux 6.12.25+rpt-rpi-2712
 architecture		arm64	
