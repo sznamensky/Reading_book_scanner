@@ -14,4 +14,4 @@ architecture		arm64
 6. CHIKS original software:	TS_processes_status_v1_1.sh
 7. CHIKS original software:	stop_TS_processes_v1_2.sh
 8. CHIKS original software:	shutdown_pi.sh
-9. CHIKS original software:	calibrate_camera_v3_22.py
+   
