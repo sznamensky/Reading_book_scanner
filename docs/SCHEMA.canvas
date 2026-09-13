@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"drivers_layer","type":"text","text":"📦 Драйверы GPIOZero\n\nCamera Object L\nCamera Object R\nLED Object L\nLED Object R\nButton Object","x":400,"y":220,"width":300,"height":180,"color":"5"},
+		{"id":"calibration_layer","type":"text","text":"📐 Калибровка камер\n\nL_calibration.dat\nR_calibration.dat\nМатрица L 3x3 + коэфф. дисторсии 1x5\nМатрица R 3x3 + коэфф. дисторсии 1x5","x":400,"y":520,"width":300,"height":180,"color":"7"},
+		{"id":"image_pipeline","type":"text","text":"🔄 Пайплайн обработки\n\nКадр камеры → Предобработка → Исправление дисторсии → Обрезка","x":-360,"y":-250,"width":300,"height":180,"color":"5"},
+		{"id":"preprocessing","type":"text","text":"🔧 Предобработка (CLAHE)\n\nGrayscale\nclipLimit=1.5, tileGridSize=(8,8)\nTHRESH_BINARY (130/125)","x":-690,"y":-250,"width":300,"height":180,"color":"7"},
+		{"id":"undistortion","type":"text","text":"🧪 Исправление дисторсии\n\ncv.getOptimalNewCameraMatrix()\ncv.undistort()\nОбрезка по ROI (x,y,w,h)","x":-690,"y":30,"width":300,"height":180,"color":"7"},
+		{"id":"image_processing","type":"text","text":"✂️ Обработка изображения\n\nПоворот 90°\nПоиск границ страницы\nНайти верхнюю границу\nНайти правую границу (L/R)\nНайти левую границу (L/R)","x":-690,"y":320,"width":300,"height":180,"color":"7"},
+		{"id":"output","type":"text","text":"💾 Вывод результатов\n\nСохранить page_1.png (/tmp/TalkingScanner/)\nСохранить page_2.png (/tmp/TalkingScanner/)\nOCR (путь к файлу)","x":-360,"y":450,"width":300,"height":180,"color":"7"},
+		{"id":"hardware_layer","type":"text","text":"🔌 Аппаратный слой\n\nКамера L (IMX219)\nКамера R (IMX219)\nLED Лампа L\nLED Лампа R","x":400,"y":-70,"width":300,"height":180,"color":"6"},
+		{"id":"start_node","type":"text","text":"🏁 Начало работы\n\nПользователь нажал кнопку","x":400,"y":-340,"width":300,"height":120}
+	],
+	"edges":[
+		{"id":"start_to_hw","fromNode":"start_node","fromSide":"bottom","toNode":"hardware_layer","toSide":"top","fromEnd":"arrow"},
+		{"id":"hw_to_drivers","fromNode":"hardware_layer","fromSide":"bottom","toNode":"drivers_layer","toSide":"top","fromEnd":"arrow"},
+		{"id":"drivers_to_calib","fromNode":"drivers_layer","fromSide":"bottom","toNode":"calibration_layer","toSide":"top","fromEnd":"arrow"},
+		{"id":"image_to_pipe","fromNode":"image_pipeline","fromSide":"right","toNode":"hardware_layer","toSide":"bottom"},
+		{"id":"pipe_to_proc","fromNode":"preprocessing","fromSide":"right","toNode":"image_pipeline","toSide":"left"},
+		{"id":"proc_to_distort","fromNode":"undistortion","fromSide":"right","toNode":"preprocessing","toSide":"bottom","fromEnd":"arrow"},
+		{"id":"distort_to_proc","fromNode":"image_processing","fromSide":"right","toNode":"undistortion","toSide":"bottom","fromEnd":"arrow"},
+		{"id":"proc_to_output","fromNode":"output","fromSide":"right","toNode":"image_processing","toSide":"bottom"}
+	]
+}
