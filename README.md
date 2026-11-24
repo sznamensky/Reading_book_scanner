@@ -11,9 +11,10 @@ kernel			Linux 6.12.25+rpt-rpi-2712
 architecture		arm64	
 2. OCR	tesseract v.5.3.0
 3. TTS	RHVoice
-4. CHIKS original software:	TalkingScanner_raspy5_v3_52_sn2.sh
-5. CHIKS original software:	button_ctrl_takepic_undist_preproc_raspy5_v3_52_sn2.py
+4. CHIKS original software:	TalkingScanner_v4_1.sh
+5. CHIKS original software:	button_ctrl_takepic_undist_preproc_v4_1.py
 6. CHIKS original software:	TS_processes_status_v1_1.sh
 7. CHIKS original software:	stop_TS_processes_v1_2.sh
 8. CHIKS original software:	shutdown_pi.sh
+9. tscnr.cfg
    
